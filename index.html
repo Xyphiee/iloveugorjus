@@ -11,6 +11,8 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+      overflow: hidden;
       text-align: center;
     }
 
@@ -19,6 +21,10 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     h1 {
@@ -38,11 +44,18 @@
     #yesBtn {
       background-color: #ff4d6d;
       color: white;
-      margin-right: 20px;
+      transform-origin: center center;
     }
 
     #noBtn {
       background-color: #ccc;
+    }
+    .btn-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
@@ -51,12 +64,14 @@
   <div class="container">
     <img id="gifImg" src="https://media1.tenor.com/m/Eazcnx5O-bgAAAAC/dudu-dudu-cute.gif" alt="Cute GIF" style="width:150px; margin-bottom:20px;">
     <h1>Will you be my Valentine? 💘</h1>
-    <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
-    <button id="noBtn" onclick="noClicked()">No 💔</button>
+    <div class="btn-row">
+      <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+      <button id="noBtn" onclick="noClicked()">No 💔</button>
+    </div>
   </div>
 
   <script>
-    let yesSize = 20;
+    let yesScale = 1;
     let noTexts = [
       "Are you sure? 🥺",
       "Pleaseeee 💔",
@@ -70,17 +85,15 @@
     let noIndex = 0;
 
     function noClicked() {
-      yesSize += 10;
-      document.getElementById("yesBtn").style.fontSize = yesSize + "px";
+      yesScale += 0.25;
+      document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
 
       document.getElementById("noBtn").innerText =
         noTexts[noIndex % noTexts.length];
 
       noIndex++;
-        let gifUrls = [
-          "https://media1.tenor.com/m/8Hs24bl0z94AAAAC/12.gif"
-        ];
-        document.getElementById("gifImg").src = gifUrls[0];
+      // change GIF (single provided GIF)
+      document.getElementById("gifImg").src = "https://media1.tenor.com/m/8Hs24bl0z94AAAAC/12.gif";
     }
 
     function yesClicked() {
