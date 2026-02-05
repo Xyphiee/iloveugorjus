@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💖</title>
+  <style>
+    body {
+      background: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+      margin-right: 20px;
+    }
+
+    #noBtn {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="gifImg" src="https://media1.tenor.com/m/Eazcnx5O-bgAAAAC/dudu-dudu-cute.gif" alt="Cute GIF" style="width:150px; margin-bottom:20px;">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+    <button id="noBtn" onclick="noClicked()">No 💔</button>
+  </div>
+
+  <script>
+    let yesSize = 20;
+    let noTexts = [
+      "Are you sure? 🥺",
+      "Pleaseeee 💔",
+      "I’ll cry 😭",
+      "Don’t do this to me 😢",
+      "I made this just for you 💕",
+      "I beg youuu 🥹",
+      "Pretty please? 🌸",
+      "Okay now this hurts 😭"
+  ];
+    let noIndex = 0;
+
+    function noClicked() {
+      yesSize += 10;
+      document.getElementById("yesBtn").style.fontSize = yesSize + "px";
+
+      document.getElementById("noBtn").innerText =
+        noTexts[noIndex % noTexts.length];
+
+      noIndex++;
+        let gifUrls = [
+          "https://media1.tenor.com/m/8Hs24bl0z94AAAAC/12.gif"
+        ];
+        document.getElementById("gifImg").src = gifUrls[0];
+    }
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          background:#ffe6f0;
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          font-family:'Comic Sans MS';
+          text-align:center;">
+          <h1 style="color:#ff4d6d;">
+            YAYYY 💕🥰<br>
+            Happy Valentine’s Day 💖
+          </h1>
+          <img src="https://media1.tenor.com/m/BxibqUT9-I0AAAAC/dudu-flower.gif" alt="Cute GIF" style="width:180px; margin-top:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
